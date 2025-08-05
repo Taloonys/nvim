@@ -23,6 +23,8 @@ lspconfig.dockerls.setup({ capabilites = capabilities })
 -- ╔══════════════════════════════╗
 -- ║    Autocompletion sources    ║
 -- ╚══════════════════════════════╝
+
+-- smart context autocompletion
 local tabnine = require("cmp_tabnine.config")
 
 tabnine:setup({
@@ -40,6 +42,7 @@ tabnine:setup({
 	min_percent = 0,
 })
 
+-- sources for autocompletion
 local cmp = require("cmp")
 cmp.setup({
 	snippet = {
@@ -69,6 +72,7 @@ cmp.setup({
 	}),
 })
 
+-- command line autocompletion buff
 cmp.setup.cmdline("/", {
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = {

@@ -1,2 +1,6 @@
 # Reminder
-* Plugin installation's `opts` param could rewrite manual setup call, or could **cause double setup**
+* File load order: `plugin` -> `opts` -> `config()` -> `after/` (or `config/`)
+
+# Todo
+* AI integration like in cursor
+* `config/` -> `after/`
