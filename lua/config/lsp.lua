@@ -19,6 +19,31 @@ lspconfig.clangd.setup({ capabilites = capabilities })
 lspconfig.cmake.setup({ capabilites = capabilities })
 lspconfig.rust_analyzer.setup({ capabilites = capabilities }) -- could be replaced by rustaceanvim
 lspconfig.dockerls.setup({ capabilites = capabilities })
+lspconfig.jsonls.setup({
+	capabilites = capabilities,
+	settings = {
+		json = {
+			schemas = require("schemastore").json.schemas(),
+			validate = { enable = true },
+		},
+	},
+})
+lspconfig.yamlls.setup({
+	capabilites = capabilities,
+	settings = {
+		yaml = {
+			schemaStore = {
+				-- You must disable built-in schemaStore support if you want to use
+				-- this plugin and its advanced options like `ignore`.
+				enable = false,
+				-- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+				url = "",
+			},
+			schemas = require("schemastore").yaml.schemas(),
+		},
+	},
+})
+lspconfig.eslint.setup({ capabilites = capabilities }) -- js, ts
 
 -- ╔══════════════════════════════╗
 -- ║    Autocompletion sources    ║
