@@ -51,22 +51,22 @@ lspconfig.eslint.setup({ capabilites = capabilities }) -- js, ts
 
 -- smart context autocompletion
 -- in russia it works through VPN, it's NOT local...
-local tabnine = require("cmp_tabnine.config")
+-- local tabnine = require("cmp_tabnine.config")
 
-tabnine:setup({
-	max_lines = 1000,
-	max_num_results = 20,
-	sort = true,
-	run_on_every_keystroke = true,
-	snippet_placeholder = "..",
-	ignored_file_types = {
-		-- default is not to ignore
-		-- uncomment to ignore in lua:
-		lua = true,
-	},
-	show_prediction_strength = true,
-	min_percent = 0,
-})
+-- tabnine:setup({
+-- 	max_lines = 1000,
+-- 	max_num_results = 20,
+-- 	sort = true,
+-- 	run_on_every_keystroke = true,
+-- 	snippet_placeholder = "..",
+-- 	ignored_file_types = {
+-- 		-- default is not to ignore
+-- 		-- uncomment to ignore in lua:
+-- 		lua = true,
+-- 	},
+-- 	show_prediction_strength = true,
+-- 	min_percent = 0,
+-- })
 
 -- sources for autocompletion
 local cmp = require("cmp")
@@ -86,6 +86,7 @@ cmp.setup({
 		["<C-k>"] = cmp.mapping.select_prev_item(),
 		["<C-j>"] = cmp.mapping.select_next_item(),
 		["<C-Space>"] = cmp.mapping.complete(), -- Open completion list
+		["<C-y>"] = require("minuet").make_cmp_map(),
 	},
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" }, -- lsp completion
@@ -93,9 +94,17 @@ cmp.setup({
 		{ name = "buffer" }, -- completion with words, that were used in current buffer
 		{ name = "path" }, -- system paths
 		{ name = "nvim_lsp_signature_help" }, -- show signature docs
-		{ name = "cmp_tabnine" },
+		-- { name = "cmp_tabnine" },
+		{ name = "minuet" },
 		{ name = "treesitter" },
 	}),
+	performance = {
+		-- It is recommended to increase the timeout duration due to
+		-- the typically slower response speed of LLMs compared to
+		-- other completion sources. This is not needed when you only
+		-- need manual completion.
+		fetching_timeout = 2000,
+	},
 })
 
 -- command line autocompletion buff
