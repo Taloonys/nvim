@@ -16,9 +16,6 @@ end
 require("nvim-tree").setup({
 	update_focused_file = { enable = true }, -- change file tree focus according current opened file
 
-	-- keymaps
-	vim.keymap.set("n", "<leader>pv", ":NvimTreeToggle <CR>"),
-
 	-- UI
 	view = {
 		signcolumn = "yes",
