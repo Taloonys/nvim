@@ -50,6 +50,7 @@ lspconfig.eslint.setup({ capabilites = capabilities }) -- js, ts
 -- ╚══════════════════════════════╝
 
 -- smart context autocompletion
+-- in russia it works through VPN, it's NOT local...
 local tabnine = require("cmp_tabnine.config")
 
 tabnine:setup({
