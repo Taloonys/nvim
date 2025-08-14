@@ -15,7 +15,6 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 lspconfig.lua_ls.setup({ capabilites = capabilities })
 lspconfig.pyright.setup({ capabilites = capabilities })
 lspconfig.gopls.setup({ capabilites = capabilities })
-lspconfig.clangd.setup({ capabilites = capabilities })
 lspconfig.cmake.setup({ capabilites = capabilities })
 lspconfig.rust_analyzer.setup({ capabilites = capabilities }) -- could be replaced by rustaceanvim
 lspconfig.dockerls.setup({ capabilites = capabilities })
@@ -44,6 +43,7 @@ lspconfig.yamlls.setup({
 	},
 })
 lspconfig.eslint.setup({ capabilites = capabilities }) -- js, ts
+lspconfig.clangd.setup({ init_options = { fallbackFlags = { "--std=c++17" } }, capabilites = capabilities }) -- if it's hard to config cmake-nvim, that specify version for less messages
 
 -- ╔══════════════════════════════╗
 -- ║    Autocompletion sources    ║
