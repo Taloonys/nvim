@@ -6,14 +6,14 @@
 vim.g.mapleader = " " -- <leader> is now whitespace
 
 -- System buffer
-vim.keymap.set({ 'n', 'v' }, '<leader>sy', '"+y') -- selected
-vim.keymap.set({ 'n', 'v' }, '<leader>sY', '"+Y') -- whole line
+vim.keymap.set({ "n", "v" }, "<leader>sy", '"+y') -- selected
+vim.keymap.set({ "n", "v" }, "<leader>sY", '"+Y') -- whole line
 
-vim.keymap.set({ 'n', 'v' }, '<leader>sd', '"+d') -- selected
-vim.keymap.set({ 'n', 'v' }, '<leader>sD', '"+D') -- whole line
+vim.keymap.set({ "n", "v" }, "<leader>sd", '"+d') -- selected
+vim.keymap.set({ "n", "v" }, "<leader>sD", '"+D') -- whole line
 
-vim.keymap.set('n', '<leader>sp', '"+p')          -- after cursor (Somehow it's slow*)
-vim.keymap.set('n', '<leader>sP', '"+P')          -- before cursor
+vim.keymap.set("n", "<leader>sp", '"+p') -- after cursor (Somehow it's slow*)
+vim.keymap.set("n", "<leader>sP", '"+P') -- before cursor
 
 -- (NOT RLY USEFUL) Split navigation
 -- vim.keymap.set("n", "<C-h>", "<C-w>h")
@@ -30,11 +30,12 @@ vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- drag selected text 1 line up
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- drag selected text 1 line down
 
-vim.keymap.set("v", "<", "<gv")              -- drag 1 tab left (and don't lose selection!)
-vim.keymap.set("v", ">", ">gv")              -- drag 1 tab right (and don't lose selection!)
+vim.keymap.set("v", "<", "<gv") -- drag 1 tab left (and don't lose selection!)
+vim.keymap.set("v", ">", ">gv") -- drag 1 tab right (and don't lose selection!)
 
 -- Basic stuff enchancements
 vim.keymap.set("n", "J", "mzJ`z") -- concatenate lines, BUT keeps cursor position
+vim.keymap.set({ "n", "v" }, "<leader>nh", ":nohlsearch<CR>") -- clear hightlight (that usually left by search)
 
 -- replaced by neoscroll
 -- vim.keymap.set("n", "<C-d>", "<C-d>zz")    -- scroll down AND center cursor pos on screen
