@@ -49,25 +49,6 @@ lspconfig.clangd.setup({ init_options = { fallbackFlags = { "--std=c++17" } }, c
 -- ║    Autocompletion sources    ║
 -- ╚══════════════════════════════╝
 
--- smart context autocompletion
--- in russia it works through VPN, it's NOT local...
--- local tabnine = require("cmp_tabnine.config")
-
--- tabnine:setup({
--- 	max_lines = 1000,
--- 	max_num_results = 20,
--- 	sort = true,
--- 	run_on_every_keystroke = true,
--- 	snippet_placeholder = "..",
--- 	ignored_file_types = {
--- 		-- default is not to ignore
--- 		-- uncomment to ignore in lua:
--- 		lua = true,
--- 	},
--- 	show_prediction_strength = true,
--- 	min_percent = 0,
--- })
-
 -- sources for autocompletion
 local cmp = require("cmp")
 cmp.setup({
@@ -97,6 +78,8 @@ cmp.setup({
 		-- { name = "cmp_tabnine" },
 		{ name = "minuet" },
 		{ name = "treesitter" },
+		{ name = "doxygen" },
+		{ name = "conventionalcommits" },
 	}),
 	performance = {
 		-- It is recommended to increase the timeout duration due to
