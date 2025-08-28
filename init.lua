@@ -5,10 +5,9 @@ require("keymap")
 -- Plugin Manager
 require("config.lazy")
 
+-- Afterwork
+require("after.lsp")
 require("after.colors")
-
-require("config.lsp")
-require("config.linting")
 
 -- C++ specific
 require("config.cpp-landscape.cmake")
