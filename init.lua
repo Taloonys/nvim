@@ -7,8 +7,6 @@ require("config.lazy")
 
 -- Config domains
 require("config.parsers")
-require("config.terminal")
-require("config.searching")
 
 require("after.colors")
 require("config.statusline")
