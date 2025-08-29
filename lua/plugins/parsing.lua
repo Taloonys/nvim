@@ -65,10 +65,4 @@ return {
 		end,
 		config = TreesitterConfig,
 	},
-	{
-		"nvim-treesitter/nvim-treesitter-context",
-		config = function()
-			vim.keymap.set("n", "<leader>cv", ":TSContext toggle<CR>")
-		end,
-	},
 }

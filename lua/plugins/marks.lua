@@ -1,5 +1,4 @@
--- plugin
-return {
+local harpoon = {
 	"ThePrimeagen/harpoon",
 	branch = "harpoon2",
 	dependencies = { { "nvim-lua/plenary.nvim" } },
@@ -44,3 +43,5 @@ return {
 		end)
 	end,
 }
+
+return harpoon

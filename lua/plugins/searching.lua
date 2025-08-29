@@ -1,4 +1,4 @@
-function config()
+function keymaps()
 	local builtin = require("telescope.builtin")
 
 	local map = vim.keymap.set
@@ -19,18 +19,20 @@ function config()
 	map("n", "<leader>fb", builtin.buffers, {}) -- view buffers
 end
 
+local plugins_search = {
+	"polirritmico/telescope-lazy-plugins.nvim",
+	keys = {
+		{ "<leader>cp", "<Cmd>Telescope lazy_plugins<CR>", desc = "Telescope: Plugins" },
+	},
+}
+
 return {
 	"nvim-telescope/telescope.nvim",
 	tag = "0.1.8",
 	cmd = "Telescope",
 	dependencies = {
 		{ "nvim-lua/plenary.nvim" },
-		{
-			"polirritmico/telescope-lazy-plugins.nvim",
-			keys = {
-				{ "<leader>cp", "<Cmd>Telescope lazy_plugins<CR>", desc = "Telescope: Plugins" },
-			},
-		},
+		plugins_search,
 	},
 	opts = {
 		extensions = {
@@ -42,5 +44,5 @@ return {
 		},
 		-- etc.
 	},
-	config = config,
+	config = keymaps,
 }
