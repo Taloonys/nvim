@@ -6,6 +6,8 @@
 
 - File load order: `plugin` -> `opts` -> `config()` -> `after/` (or `config/`)
 
+- lazy plugin manager **doesn't load plugin twice** if you specify plugin and then specify it as dependencie for another plugin
+
 # Todo
 
 - AI integration like in cursor
