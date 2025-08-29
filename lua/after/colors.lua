@@ -27,11 +27,20 @@ function FixNoiceColors()
 	vim.api.nvim_set_hl(0, "NotifyWARNBorder", { bg = "none" })
 	vim.api.nvim_set_hl(0, "NotifyINFOBorder", { bg = "none" })
 	vim.api.nvim_set_hl(0, "NotifyDEBUGBorder", { bg = "none" })
+
+	require("notify").setup({
+		-- call :h notify.setup() to see defaults
+		background_colour = "#000000", -- basicly to drop useless warning
+		render = "minimal",
+		top_down = false,
+		fps = 60,
+	})
 end
 
 -- ╔════════════════════╗
 -- ║    Call Pencils    ║
 -- ╚════════════════════╝
+
 SetCoreColors()
 FixTelescopeColors()
 FixNoiceColors()

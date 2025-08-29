@@ -1,11 +1,3 @@
-local message_design = {
-	-- call :h notify.setup() to see defaults
-	background_colour = "#000000", -- basicly to drop useless warning
-	render = "minimal",
-	top_down = false,
-	fps = 60,
-}
-
 local message_behaviour = {
 	lsp = {
 		override = {
@@ -54,7 +46,6 @@ return {
 			lsp_doc_border = true,
 		},
 		config = function()
-			require("notify").setup(message_design)
 			require("noice").setup()
 		end,
 	},

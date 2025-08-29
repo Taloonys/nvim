@@ -9,5 +9,5 @@ require("config.lazy")
 require("after.lsp")
 require("after.colors")
 
--- C++ specific
-require("config.cpp-landscape.cmake")
+-- Specific
+require("after.cpp-landscape.cmake") -- C++, cmake
