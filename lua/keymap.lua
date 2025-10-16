@@ -6,14 +6,14 @@
 vim.g.mapleader = " " -- <leader> is now whitespace
 
 -- System buffer
-vim.keymap.set({ "n", "v" }, "<leader>sy", '"+y') -- selected
-vim.keymap.set({ "n", "v" }, "<leader>sY", '"+Y') -- whole line
+vim.keymap.set({ "n", "v" }, "<leader>sy", '"+y', { desc = " selected" })
+vim.keymap.set({ "n", "v" }, "<leader>sY", '"+Y', { desc = " whole line" })
 
-vim.keymap.set({ "n", "v" }, "<leader>sd", '"+d') -- selected
-vim.keymap.set({ "n", "v" }, "<leader>sD", '"+D') -- whole line
+vim.keymap.set({ "n", "v" }, "<leader>sd", '"+d', { desc = " selected" })
+vim.keymap.set({ "n", "v" }, "<leader>sD", '"+D', { desc = " whole line" })
 
-vim.keymap.set("n", "<leader>sp", '"+p') -- after cursor (Somehow it's slow*)
-vim.keymap.set("n", "<leader>sP", '"+P') -- before cursor
+vim.keymap.set("n", "<leader>sp", '"+p', { desc = " after cursor (Somehow it's slow*)" })
+vim.keymap.set("n", "<leader>sP", '"+P', { desc = " before cursor" })
 
 -- (NOT RLY USEFUL) Split navigation
 -- vim.keymap.set("n", "<C-h>", "<C-w>h")
@@ -27,15 +27,14 @@ vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>")
 vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>")
 
 -- Visual mode
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- drag selected text 1 line up
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- drag selected text 1 line down
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "drag selected text 1 line up" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "drag selected text 1 line down" })
 
-vim.keymap.set("v", "<", "<gv") -- drag 1 tab left (and don't lose selection!)
-vim.keymap.set("v", ">", ">gv") -- drag 1 tab right (and don't lose selection!)
+vim.keymap.set("v", "<", "<gv", { desc = "drag 1 tab left (and don't lose selection!)" })
+vim.keymap.set("v", ">", ">gv", { desc = "drag 1 tab right (and don't lose selection!)" })
 
 -- Basic stuff enchancements
-vim.keymap.set("n", "J", "mzJ`z") -- concatenate lines, BUT keeps cursor position
-vim.keymap.set({ "n", "v" }, "<leader>nh", ":nohlsearch<CR>") -- clear hightlight (that usually left by search)
+vim.keymap.set("n", "J", "mzJ`z", { desc = "concatenate lines, BUT keeps cursor position" })
 
 -- replaced by neoscroll
 -- vim.keymap.set("n", "<C-d>", "<C-d>zz")    -- scroll down AND center cursor pos on screen
@@ -44,4 +43,36 @@ vim.keymap.set({ "n", "v" }, "<leader>nh", ":nohlsearch<CR>") -- clear hightligh
 -- vim.keymap.set("n", "N", "Nzzzv")          -- find previous occurence AND center cursor + open fold
 
 -- Misellaneous
-vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>") -- sync new changes in config with current session
+vim.keymap.set(
+	"n",
+	"<space><space>x",
+	"<cmd>source %<CR>",
+	{ desc = "sync new changes in config with current session" }
+)
+
+-- Better text substitution
+vim.keymap.set(
+	"n",
+	"<leader>rn",
+	[[:%s/\<<C-r><C-w>\>//gc<Left><Left><Left>]],
+	{ desc = "Rename whole word under cursor (with confirmation)" }
+)
+vim.keymap.set(
+	"n",
+	"<leader>rN",
+	[[:%s/\<<C-r><C-w>\>//g<Left><Left>]],
+	{ desc = "Rename whole word FAST without confirmation" }
+)
+
+vim.keymap.set(
+	"v",
+	"<leader>rn",
+	[["hy:%s/<C-r>h//gc<Left><Left>]],
+	{ desc = "Rename selected text (with confirmation)" }
+)
+vim.keymap.set(
+	"v",
+	"<leader>rN",
+	[["hy:%s/<C-r>h//g<Left><Left>]],
+	{ desc = "Rename selected text FAST without confirmation" }
+)

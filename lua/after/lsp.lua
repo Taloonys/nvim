@@ -62,8 +62,8 @@ cmp.setup({
 		documentation = cmp.config.window.bordered(),
 	},
 	mapping = {
-		["<CR>"] = cmp.mapping.confirm({ select = true }), -- <CR> = Enter. Set `select` to `false` to only confirm explicitly selected items.
-		["<Tab>"] = cmp.mapping.confirm({ select = true }),
+		-- ["<CR>"] = cmp.mapping.confirm({ select = true }), -- <CR> = Enter. Set `select` to `false` to only confirm explicitly selected items.
+		["<Tab>"] = cmp.mapping.confirm({ select = true }), -- there is a plenty of pain with ai-completion wih <CR> and <Tab><Tab>
 		["<C-k>"] = cmp.mapping.select_prev_item(),
 		["<C-j>"] = cmp.mapping.select_next_item(),
 		["<C-Space>"] = cmp.mapping.complete(), -- Open completion list
