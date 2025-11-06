@@ -1,7 +1,11 @@
 return {
-	"rose-pine/neovim",
-	name = "rose-pine",
+	"scottmckendry/cyberdream.nvim",
+	lazy = false,
+	priority = 1000,
 	config = function()
-		vim.cmd("colorscheme rose-pine-moon")
-	end
+		require("cyberdream").setup({
+			transparent = true,
+		})
+		vim.cmd("colorscheme cyberdream")
+	end,
 }

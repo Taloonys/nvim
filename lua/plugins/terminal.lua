@@ -6,8 +6,7 @@ return {
 		-- Settings are applied only by wsl (for example) relaunching...
 		-- ]]
 		open_mapping = [[<c-\>]],
-		shell = "nu",
-		-- shell = "powershell.exe",
+		shell = "fish",
 		autochdir = false,
 		direction = "float",
 		float_opts = {
