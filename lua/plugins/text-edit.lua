@@ -150,6 +150,16 @@ local pretty_fold = {
 	end,
 }
 
+local split_or_join_code = {
+	"Wansmer/treesj",
+	keys = { "<space>m", "<space>j", "<space>s" },
+	dependencies = { "nvim-treesitter/nvim-treesitter" }, -- if you install parsers with `nvim-treesitter`
+	config = function()
+		require("treesj").setup({--[[ your config ]]
+		})
+	end,
+}
+
 return {
 	surround,
 	autopairs,
@@ -157,4 +167,5 @@ return {
 	parser_based_refactor,
 	smart_substitution,
 	multi_cursor,
+	split_or_join_code,
 }
