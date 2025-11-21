@@ -7,7 +7,11 @@ local md_preview = {
 	-- if prebuild is not found => call manually in nvim `:call mkdp#util#install()`
 	-- TODO: mdeval.nvim or sniprun.nvim
 	build = function()
-		vim.fn["mkdp#util#install"]()
+		if vim.fn.executable("yarn") == 1 then
+			vim.fn["mkdp#util#install"]()
+		else
+			vim.notify("⚠️ Please install 'yarn' or 'npm' to build markdown-preview.nvim", vim.log.levels.WARN)
+		end
 	end,
 	config = function()
 		-- MarkDown View
