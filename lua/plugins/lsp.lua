@@ -51,9 +51,7 @@ local lsp_tools_installer = {
 			"stylua",
 			-- linters
 			"pylint",
-			"cpplint",
 			"eslint_d",
-			"cpplint",
 			"cmakelint",
 			"hadolint",
 			"bacon",

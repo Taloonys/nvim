@@ -43,7 +43,13 @@ lspconfig.yamlls.setup({
 	},
 })
 lspconfig.eslint.setup({ capabilites = capabilities }) -- js, ts
-lspconfig.clangd.setup({ init_options = { fallbackFlags = { "--std=c++17" } }, capabilites = capabilities }) -- if it's hard to config cmake-nvim, that specify version for less messages
+lspconfig.clangd.setup({
+	cmd = { "clangd", "--background-index", "--clang-tidy" },
+	init_options = {
+		fallbackFlags = { "--std=c++17" }, --
+	},
+	capabilites = capabilities,
+})
 
 -- ╔══════════════════════════════╗
 -- ║    Autocompletion sources    ║

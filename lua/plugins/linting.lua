@@ -9,7 +9,6 @@ return {
 
 		lint.linters_by_ft = {
 			cmake = { "cmakelint" },
-			cpp = { "cpplint" },
 			python = { "pylint" },
 			rust = { "bacon" },
 			docker = { "hadolint" },
