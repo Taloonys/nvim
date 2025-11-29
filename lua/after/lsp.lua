@@ -139,13 +139,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
 
 		opts.desc = "Smart rename"
-		map("n", "<leader>rn", vim.lsp.buf.rename, opts)
+		map("n", "grn", vim.lsp.buf.rename, opts)
 
 		opts.desc = "Show buffer diagnostics"
-		map("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
+		map("n", "gbd", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
 
 		opts.desc = "Show line diagnostics"
-		map("n", "<leader>d", vim.diagnostic.open_float, opts)
+		map("n", "gld", vim.diagnostic.open_float, opts)
 
 		opts.desc = "Show documentation for what is under cursor"
 		map("n", "K", vim.lsp.buf.hover, opts)

@@ -6,7 +6,8 @@ return {
 		-- Settings are applied only by wsl (for example) relaunching...
 		-- ]]
 		-- open_mapping = [[<c-\>]], -- default
-		open_mapping = [[<C-\><C-t>]],
+		-- open_mapping = [[<C-\><C-t>]],
+		open_mapping = [[<leader>t]],
 		shell = "fish",
 		autochdir = false,
 		direction = "float",

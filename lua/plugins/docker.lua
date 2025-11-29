@@ -1,6 +1,6 @@
 vim.keymap.set(
 	{ "n", "t" },
-	"<leader>ld",
+	"<leader>ldr",
 	"<Cmd>lua require('lazydocker').toggle({ engine = 'docker' })<CR>",
 	{ desc = "LazyDocker (docker)" }
 )

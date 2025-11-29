@@ -1,4 +1,4 @@
-local format_file_keymap = "<leader>f"
+local format_file_keymap = "<leader>fmt"
 
 return {
 	"stevearc/conform.nvim",

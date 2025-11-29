@@ -1,25 +1,36 @@
--- keymaps
-vim.keymap.set("n", "<leader>pv", ":NvimTreeToggle <CR>")
-vim.keymap.set("n", "<leader>R", ':lua require("nvim-tree.api").tree.change_root_to_node()<CR>')
+local oil_buffer_like_ex = {
+	"stevearc/oil.nvim",
+	---@module 'oil'
+	---@type oil.SetupOpts
+	opts = {},
+	-- Optional dependencies
+	dependencies = { { "nvim-mini/mini.icons", opts = {} } },
+	-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+	-- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+	config = function()
+		local oil = require("oil")
+		oil.setup({
+			default_file_explorer = false,
+			win_options = {
+				-- without it telescope and other stuff would work with ~ instead of {cwd}
+				winbar = "%{v:lua.require('oil').get_current_dir()}",
+				signcolumn = "yes:2",
+			},
+			float = {
+				max_width = 0.7,
+				max_height = 0.7,
+				border = "rounded",
+			},
+		})
+	end,
+	lazy = false,
+}
 
--- dimensions
-local function open_win_config_func()
-	local scr_w = vim.opt.columns:get()
-	local scr_h = vim.opt.lines:get()
-	local tree_w = math.floor(vim.o.columns * 0.8) -- math.floor(scr_w / 2)
-	local tree_h = math.floor(tree_w * scr_h / scr_w)
-	return {
-		border = "rounded",
-		relative = "editor",
-		width = tree_w,
-		height = tree_h,
-		col = (scr_w - tree_w) / 2,
-		row = (scr_h - tree_h) / 2,
-	}
-end
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+vim.keymap.set({ "n", "v" }, "<leader>eo", "<CMD>Oil --float<CR>", { desc = "Open parent directory as float" })
 
 -- plugin
-return {
+local nvim_tree_ex = {
 	"nvim-tree/nvim-tree.lua",
 	version = "*",
 	lazy = false,
@@ -28,62 +39,22 @@ return {
 	},
 	config = function() -- UI & behaviour only
 		require("nvim-tree").setup({
-			update_focused_file = { enable = true }, -- change file tree focus according current opened file
-
-			-- UI
-			view = {
-				signcolumn = "yes",
-				float = {
-					enable = true,
-					open_win_config = open_win_config_func,
-				},
-				cursorline = false,
+			sort = {
+				sorter = "case_sensitive",
 			},
-			modified = {
-				enable = true,
+			view = {
+				width = 30,
 			},
 			renderer = {
-				indent_width = 3,
-				icons = {
-					show = {
-						hidden = true,
-					},
-					git_placement = "after",
-					bookmarks_placement = "after",
-					symlink_arrow = " -> ",
-					glyphs = {
-						folder = {
-							arrow_closed = " ",
-							arrow_open = " ",
-							default = "",
-							open = "",
-							empty = "",
-							empty_open = "",
-							symlink = "",
-							symlink_open = "",
-						},
-						default = "󱓻",
-						symlink = "󱓻",
-						bookmark = "",
-						modified = "",
-						hidden = "󱙝",
-						git = {
-							unstaged = "×",
-							staged = "",
-							unmerged = "󰧾",
-							untracked = "",
-							renamed = "",
-							deleted = "",
-							ignored = "∅",
-						},
-					},
-				},
+				group_empty = true,
 			},
 			filters = {
-				git_ignored = false,
+				dotfiles = true,
 			},
-			hijack_cursor = true,
-			sync_root_with_cwd = true,
 		})
 	end,
 }
+
+vim.keymap.set({ "n", "v" }, "<leader>ef", "<CMD>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
+
+return { nvim_tree_ex, oil_buffer_like_ex }

@@ -3,12 +3,12 @@ function keymaps()
 
 	local map = vim.keymap.set
 
-	map("n", "<leader>pf", builtin.find_files, {}) -- main use
+	map("n", "<leader>ff", builtin.find_files, {}) -- main use
 	map("n", "<leader>fa", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>") -- find all files (include hidden)
 
 	map("n", "<C-p>", builtin.git_files, {}) -- browse git files
 
-	map("n", "<leader>ps", function() -- Can find <input> inside project files
+	map("n", "<leader>gs", function() -- Can find <input> inside project files
 		builtin.grep_string({ search = vim.fn.input("Grep > ") })
 	end)
 
@@ -17,6 +17,9 @@ function keymaps()
 	-- Buffers overview
 	map("n", "<leader>fg", builtin.live_grep, {})
 	map("n", "<leader>fb", builtin.buffers, {}) -- view buffers
+
+	map("n", "<leader>lds", builtin.lsp_dynamic_workspace_symbols, {})
+	map("n", "<leader>lws", builtin.lsp_workspace_symbols, {})
 end
 
 local plugins_search = {
