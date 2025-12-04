@@ -1,10 +1,9 @@
 -- ╔════════════════════╗
 -- ║    Snippet load    ║
 -- ╚════════════════════╝
--- >>> required by LuaSnip if friendly-snippes is used
+-- >>> required by LuaSnip if friendly-snippets is used
 -- `nvim-cmp` === `cmp`
 require("luasnip.loaders.from_vscode").lazy_load()
-require("luasnip.loaders.from_vscode").lazy_load({ paths = vim.fn.stdpath("config") .. "/snippets" })
 
 -- ╔════════════════════════════╗
 -- ║    Form lsp capabilites    ║

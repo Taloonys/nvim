@@ -99,31 +99,6 @@ vim.keymap.set({ "n", "x" }, "<leader>sr", function()
 	require("ssr").open()
 end)
 
-local parser_based_refactor = {
-	"nvim-treesitter/nvim-treesitter-refactor",
-	dependencies = {
-		"nvim-treesitter/nvim-treesitter", -- just required to be installed
-	},
-	config = function()
-		require("nvim-treesitter.configs").setup({
-			refactor = {
-				highlight_definitions = {
-					enable = true,
-					-- Set to false if you have an `updatetime` of ~100.
-					clear_on_cursor_move = true,
-				},
-			},
-			smart_rename = {
-				enable = true,
-				-- Assign keymaps to false to disable them, e.g. `smart_rename = false`.
-				keymaps = {
-					smart_rename = "grr",
-				},
-			},
-		})
-	end,
-}
-
 local surround = {
 	"kylechui/nvim-surround",
 	version = "^3.0.0", -- Use for stability; omit to use `main` branch for the latest features
@@ -152,10 +127,11 @@ local pretty_fold = {
 
 local split_or_join_code = {
 	"Wansmer/treesj",
-	keys = { "<space>m", "<space>j", "<space>s" },
+	keys = { "<space>m", "<space>jl", "<space>sl" },
 	dependencies = { "nvim-treesitter/nvim-treesitter" }, -- if you install parsers with `nvim-treesitter`
 	config = function()
-		require("treesj").setup({--[[ your config ]]
+		require("treesj").setup({
+			--[[ your config ]]
 		})
 	end,
 }
@@ -164,7 +140,6 @@ return {
 	surround,
 	autopairs,
 	pretty_fold,
-	parser_based_refactor,
 	smart_substitution,
 	multi_cursor,
 	split_or_join_code,

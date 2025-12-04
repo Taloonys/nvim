@@ -5,7 +5,7 @@ local scope_context = {
 	end,
 }
 
-local indenindent_blankline = {
+local indent_blankline = {
 	"lukas-reineke/indent-blankline.nvim",
 	main = "ibl",
 	---@module "ibl"
@@ -16,6 +16,7 @@ local indenindent_blankline = {
 		vim.keymap.set("n", "<leader>iv", ":IBLToggle<CR>")
 	end,
 }
+
 local colors_hints = {
 	"norcalli/nvim-colorizer.lua",
 	config = function()
@@ -24,4 +25,20 @@ local colors_hints = {
 	end,
 }
 
-return { scope_context, indent_blankline, colors_hints }
+local highlight_word = {
+	"tzachar/local-highlight.nvim",
+	config = function()
+		require("local-highlight").setup({
+			animate = {
+				enabled = false, -- only supports animation if snacks.nvim is installed
+			},
+		})
+	end,
+}
+
+return {
+	scope_context,
+	indent_blankline,
+	colors_hints,
+	highlight_word,
+}

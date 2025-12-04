@@ -25,7 +25,7 @@ end
 local plugins_search = {
 	"polirritmico/telescope-lazy-plugins.nvim",
 	keys = {
-		{ "<leader>cp", "<Cmd>Telescope lazy_plugins<CR>", desc = "Telescope: Plugins" },
+		{ "<leader>fp", "<Cmd>Telescope lazy_plugins<CR>", desc = "Telescope: Plugins" },
 	},
 }
 
