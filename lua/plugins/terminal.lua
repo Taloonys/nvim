@@ -7,7 +7,7 @@ return {
 		-- ]]
 		-- open_mapping = [[<c-\>]], -- default
 		-- open_mapping = [[<C-\><C-t>]],
-		open_mapping = [[<leader>t]],
+		open_mapping = [[<C-t><C-t>]],
 		shell = "fish",
 		autochdir = false,
 		direction = "float",
