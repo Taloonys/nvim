@@ -72,7 +72,6 @@ cmp.setup({
 		["<C-k>"] = cmp.mapping.select_prev_item(),
 		["<C-j>"] = cmp.mapping.select_next_item(),
 		["<C-Space>"] = cmp.mapping.complete(), -- Open completion list
-		["<C-y>"] = require("minuet").make_cmp_map(),
 	},
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" }, -- lsp completion
@@ -80,19 +79,10 @@ cmp.setup({
 		{ name = "buffer" }, -- completion with words, that were used in current buffer
 		{ name = "path" }, -- system paths
 		{ name = "nvim_lsp_signature_help" }, -- show signature docs
-		-- { name = "cmp_tabnine" },
-		{ name = "minuet" },
 		{ name = "treesitter" },
 		{ name = "doxygen" },
 		{ name = "conventionalcommits" },
 	}),
-	performance = {
-		-- It is recommended to increase the timeout duration due to
-		-- the typically slower response speed of LLMs compared to
-		-- other completion sources. This is not needed when you only
-		-- need manual completion.
-		fetching_timeout = 2000,
-	},
 })
 
 -- command line autocompletion buff
