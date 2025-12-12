@@ -15,11 +15,11 @@ vim.keymap.set({ "n", "v" }, "<leader>D", '"+D', { desc = " whole line" })
 vim.keymap.set("n", "<leader>p", '"+p', { desc = " after cursor (Somehow it's slow*)" })
 vim.keymap.set("n", "<leader>P", '"+P', { desc = " before cursor" })
 
--- (NOT RLY USEFUL) Split navigation
--- vim.keymap.set("n", "<C-h>", "<C-w>h")
--- vim.keymap.set("n", "<C-j>", "<C-w>j")
--- vim.keymap.set("n", "<C-k>", "<C-w>k")
--- vim.keymap.set("n", "<C-l>", "<C-w>l")
+-- Split navigation
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
 
 vim.keymap.set("n", "<C-Up>", ":resize -2<CR>")
 vim.keymap.set("n", "<C-Down>", ":resize +2<CR>")
