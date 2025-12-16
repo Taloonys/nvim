@@ -17,11 +17,6 @@ local highlight_word = {
 	"tzachar/local-highlight.nvim",
 	config = function()
 		require("local-highlight").setup()
-		-- require("local-highlight").setup({
-		-- 	animate = {
-		-- 		enabled = false, -- only supports animation if snacks.nvim is installed
-		-- 	},
-		-- })
 	end,
 }
 

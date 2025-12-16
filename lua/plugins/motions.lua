@@ -1,4 +1,4 @@
-local screen_jumps = {
+local leap_search = {
 	-- Allows jumping like in helix and/or vimium(browser)
 	"folke/flash.nvim",
 	event = "VeryLazy",
@@ -48,7 +48,7 @@ local screen_jumps = {
 	},
 }
 
-local tabout_paired_stuff = {
+local brackets_quotes_escape = {
 	{
 		"abecodes/tabout.nvim",
 		lazy = false,
@@ -92,4 +92,4 @@ local tabout_paired_stuff = {
 	},
 }
 
-return { screen_jumps, tabout_paired_stuff }
+return { leap_search, brackets_quotes_escape }

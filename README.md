@@ -20,6 +20,8 @@
 - `vaf` - select function call, `vif` select inside function call
 - `vanq` around next quotes, `valq` around last (previous) quotes
 
+- `S` - select brackets with leap-marking (after pressing you can choose which scope you want...)
+
 ## Surround words
 
 - `saw%` surround around word with %
