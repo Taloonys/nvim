@@ -6,7 +6,7 @@ local screen_jumps = {
 	opts = {},
 	keys = {
 		{
-			"s",
+			"ss", -- was `s` by default
 			mode = { "n", "x", "o" },
 			function()
 				require("flash").jump()

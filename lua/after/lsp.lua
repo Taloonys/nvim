@@ -69,9 +69,9 @@ cmp.setup({
 	mapping = {
 		-- ["<CR>"] = cmp.mapping.confirm({ select = true }), -- <CR> = Enter. Set `select` to `false` to only confirm explicitly selected items.
 		["<Tab>"] = cmp.mapping.confirm({ select = true }), -- there is a plenty of pain with ai-completion wih <CR> and <Tab><Tab>
-		["<C-k>"] = cmp.mapping.select_prev_item(),
-		["<C-j>"] = cmp.mapping.select_next_item(),
-		["<C-Space>"] = cmp.mapping.complete(), -- Open completion list
+		["<C-p>"] = cmp.mapping.select_prev_item(),
+		["<C-n>"] = cmp.mapping.select_next_item(),
+		-- ["<C-Space>"] = cmp.mapping.complete(), -- Open completion list
 	},
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" }, -- lsp completion

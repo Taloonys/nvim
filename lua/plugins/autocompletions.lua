@@ -2,7 +2,17 @@ local cmp_doxygen = {
 	"paopaol/cmp-doxygen",
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter",
-		"nvim-treesitter/nvim-treesitter-textobjects",
+		{
+			"nvim-treesitter/nvim-treesitter-textobjects",
+			config = function()
+				require("nvim-treesitter.configs").setup({
+					textobjects = {
+						-- we need it for mini.ai only work with visual stuff
+						enable = false,
+					},
+				})
+			end,
+		},
 	},
 }
 

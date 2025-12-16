@@ -75,30 +75,6 @@ local multi_cursor = {
 	end,
 }
 
-local smart_substitution = {
-	"cshuaimin/ssr.nvim",
-	config = function()
-		require("ssr").setup({
-			border = "rounded",
-			min_width = 50,
-			min_height = 5,
-			max_width = 120,
-			max_height = 25,
-			adjust_window = true,
-			keymaps = {
-				close = "q",
-				next_match = "n",
-				prev_match = "N",
-				replace_confirm = "<cr>",
-				replace_all = "<leader><cr>",
-			},
-		})
-	end,
-}
-vim.keymap.set({ "n", "x" }, "<leader>sr", function()
-	require("ssr").open()
-end)
-
 local surround = {
 	"kylechui/nvim-surround",
 	version = "^3.0.0", -- Use for stability; omit to use `main` branch for the latest features
@@ -137,10 +113,9 @@ local split_or_join_code = {
 }
 
 return {
-	surround,
+	-- surround,
 	autopairs,
 	pretty_fold,
-	smart_substitution,
 	multi_cursor,
 	split_or_join_code,
 }
