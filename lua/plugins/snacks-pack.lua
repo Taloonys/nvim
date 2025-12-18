@@ -20,9 +20,19 @@ local snacks = {
 		scroll = { enabled = false },
 		statuscolumn = { enabled = false },
 		words = { enabled = false },
+		zen = { enabled = true },
+	},
+	keys = {
+		{
+			"<leader>zen",
+			function()
+				Snacks.zen()
+			end,
+			desc = "Toggle Zen Mode",
+		},
 	},
 	config = function()
-		Snacks.dim.enable()
+		Snacks.indent.enable()
 	end,
 }
 

@@ -78,6 +78,12 @@
 - `<space>fb` - show opened File Buffers
 - `<space>gs` > type - search line in projects files, aka Grep Search
 
+## Comment code
+
+- `gcc` - Comment Current line, for selection - `gc`
+- `gc{` - Comment `{`-bracketed and etc
+- `dgc` - delete comment block
+
 ## Debug
 
 > You are not gonna use it, but..
@@ -91,3 +97,7 @@
 ## Docker
 
 - `ldr` - open LazyDockeR, that's is not really useful
+
+## Miscellaneous
+
+- `<space>zen` - distrction free mode with only current buffer and local diming (shadow non-current scope)
