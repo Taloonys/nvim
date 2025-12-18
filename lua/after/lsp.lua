@@ -4,6 +4,9 @@
 -- >>> required by LuaSnip if friendly-snippets is used
 -- `nvim-cmp` === `cmp`
 require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip.loaders.from_lua").load({
+	paths = "~/.config/nvim/lua/snippets",
+})
 
 -- ╔════════════════════════════╗
 -- ║    Form lsp capabilites    ║
@@ -57,6 +60,11 @@ lspconfig.clangd.setup({
 -- sources for autocompletion
 local cmp = require("cmp")
 cmp.setup({
+	matching = {
+		disallow_fuzzy_matching = false,
+		disallow_partial_matching = false,
+		disallow_prefix_unmatching = false,
+	},
 	snippet = {
 		expand = function(args)
 			require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
@@ -74,14 +82,14 @@ cmp.setup({
 		-- ["<C-Space>"] = cmp.mapping.complete(), -- Open completion list
 	},
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp" }, -- lsp completion
-		{ name = "luasnip" }, -- For luasnip users.
-		{ name = "buffer" }, -- completion with words, that were used in current buffer
-		{ name = "path" }, -- system paths
-		{ name = "nvim_lsp_signature_help" }, -- show signature docs
-		{ name = "treesitter" },
-		{ name = "doxygen" },
-		{ name = "conventionalcommits" },
+		{ name = "nvim_lsp", priority = 700 }, -- lsp completion
+		{ name = "luasnip", priority = 1000 }, -- For luasnip users.
+		{ name = "buffer", priority = 300 }, -- completion with words, that were used in current buffer
+		{ name = "path", priority = 200 }, -- system paths
+		{ name = "nvim_lsp_signature_help", priority = 100 }, -- show signature docs
+		{ name = "treesitter", priority = 600 },
+		{ name = "doxygen", priority = 100 },
+		{ name = "conventionalcommits", priority = 50 },
 	}),
 })
 
