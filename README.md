@@ -55,6 +55,14 @@
 - `gi` - go to implementation
 - `gbd` - whole buffer diagnostics
 - `gld` - line diagnostic
+- `<Tab>` - choose autocomplete candidate
+
+### Snippets
+
+> Highest priority, even over lsp
+
+- own **postfix** snippets for some languages
+- `<Tab>` to jump to next snippet position
 
 ## Select autocomplete/telescope candidate
 
@@ -64,6 +72,7 @@
 
 - `ss` > type symbols > press according mark - as fast current screen jump anywhere
 - `tab` - to escape brackets/quotes [`( u r here )` -> `tab` -> `( )here`]
+- `<Ctrl> h/j/k/l` for panes switching
 
 ## Terminal
 
