@@ -59,6 +59,7 @@ lspconfig.clangd.setup({
 
 -- sources for autocompletion
 local cmp = require("cmp")
+local luasnip = require("luasnip")
 cmp.setup({
 	matching = {
 		disallow_fuzzy_matching = false,
@@ -75,10 +76,29 @@ cmp.setup({
 		documentation = cmp.config.window.bordered(),
 	},
 	mapping = {
-		-- ["<CR>"] = cmp.mapping.confirm({ select = true }), -- <CR> = Enter. Set `select` to `false` to only confirm explicitly selected items.
-		["<Tab>"] = cmp.mapping.confirm({ select = true }), -- there is a plenty of pain with ai-completion wih <CR> and <Tab><Tab>
 		["<C-p>"] = cmp.mapping.select_prev_item(),
 		["<C-n>"] = cmp.mapping.select_next_item(),
+		["<Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.confirm({ select = true })
+			elseif luasnip.expand_or_jumpable() then
+				luasnip.expand_or_jump()
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+
+		["<S-Tab>"] = cmp.mapping(function(fallback)
+			if luasnip.jumpable(-1) then
+				luasnip.jump(-1)
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+		--
+		-- omitted
+		--
+		-- ["<CR>"] = cmp.mapping.confirm({ select = true }), -- <CR> = Enter. Set `select` to `false` to only confirm explicitly selected items.
 		-- ["<C-Space>"] = cmp.mapping.complete(), -- Open completion list
 	},
 	sources = cmp.config.sources({
