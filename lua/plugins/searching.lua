@@ -29,7 +29,7 @@ local plugins_search = {
 	},
 }
 
-return {
+local fzf_search_preview = {
 	"nvim-telescope/telescope.nvim",
 	tag = "0.1.8",
 	cmd = "Telescope",
@@ -49,3 +49,5 @@ return {
 	},
 	config = keymaps,
 }
+
+return { fzf_search_preview, plugins_search }
