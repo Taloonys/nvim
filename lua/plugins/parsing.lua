@@ -55,6 +55,18 @@ function TreesitterConfig()
 			additional_vim_regex_highlighting = false,
 		},
 	})
+
+	--
+	-- enable xml parser for wxs files (it's Wix)
+	--
+
+	vim.filetype.add({
+		extension = {
+			wxs = "wxs",
+		},
+	})
+
+	vim.treesitter.language.register("xml", "wxs")
 end
 
 return {
