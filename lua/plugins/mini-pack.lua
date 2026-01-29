@@ -16,14 +16,17 @@ local mini = {
 		require("mini.comment").setup() -- comment code
 
 		require("mini.files").setup({
+			-- oil-like files
 			windows = {
 				preview = true,
 				width_focus = 50,
 				width_nofocus = 25,
 				width_preview = 65,
 			},
-		}) -- oil-like files
+		})
 		vim.keymap.set({ "n", "v" }, "<leader>ef", MiniFiles.open, { desc = "Explore Files" })
+
+		require("mini.splitjoin").setup() -- `gS` to split or join lines
 	end,
 }
 
