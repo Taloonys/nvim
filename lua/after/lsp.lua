@@ -52,6 +52,7 @@ lspconfig.clangd.setup({
 	},
 	capabilites = capabilities,
 })
+lspconfig.lemminx.setup({ capabilites = capabilities, filetypes = { "xml", "xsd", "xsl", "wxs", "wxi", "wxl" } }) -- xml and etc.
 
 -- ╔══════════════════════════════╗
 -- ║    Autocompletion sources    ║
