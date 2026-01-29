@@ -63,10 +63,14 @@ function TreesitterConfig()
 	vim.filetype.add({
 		extension = {
 			wxs = "wxs",
+			wxi = "wxi",
+			wxl = "wxi",
 		},
 	})
 
 	vim.treesitter.language.register("xml", "wxs")
+	vim.treesitter.language.register("xml", "wxi")
+	vim.treesitter.language.register("xml", "wxl")
 end
 
 return {
