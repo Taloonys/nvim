@@ -37,6 +37,15 @@ ls.add_snippets("cpp", {
 		end),
 	}),
 
+	postfix(".ret", {
+		f(function(_, snip)
+			return "return " .. snip.env.POSTFIX_MATCH .. ";"
+		end),
+	}),
+})
+
+-- Cycles
+ls.add_snippets("cpp", {
 	postfix(".for", {
 		f(function(_, parent)
 			return "for (auto& elem : " .. parent.snippet.env.POSTFIX_MATCH .. ") {"
@@ -45,10 +54,7 @@ ls.add_snippets("cpp", {
 		i(1),
 		t({ "", "}" }),
 	}),
-})
 
--- Cycles
-ls.add_snippets("cpp", {
 	postfix(".fori", {
 		f(function(_, parent)
 			return "for (size_t i = 0; i < " .. parent.snippet.env.POSTFIX_MATCH .. ".size(); ++i) {"
