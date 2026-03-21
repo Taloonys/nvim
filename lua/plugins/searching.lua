@@ -40,7 +40,7 @@ local symbols_outline = {
 		require("telescope").setup(telescope_picker)
 
 		-- You probably also want to set a keymap to toggle aerial
-		vim.keymap.set("n", "<leader>a", "<cmd>Telescope aerial<CR>")
+		vim.keymap.set("n", "<leader>gs", "<cmd>Telescope aerial<CR>")
 	end,
 }
 

@@ -10,6 +10,31 @@
 
 # Keybinds overview
 
+> `g` smt stands for "global", but it's not entirely global... or as modify
+
+## Searching
+
+> with preview
+> "f" - stands for "find"
+
+- `<C-p>` - search through git tracked files
+- `<space>ff` - search through files
+- `<space>fa` - search through all files
+- `<space>fg` - search (Grep) string (live mode)
+- `<space>fb` - search through Buffers
+- `<space>fw` - search current Word
+- `<space>fp` - search through Plugins
+
+- `<space>gs` - search through Symbols
+
+## Marks
+
+- `<leader>m` - open Mark menu
+- `<leader>ha` - (Harpoon) Add to marks
+- `<leader>1` - jump to mark number
+- `<leader>hn` - (Harpoon) Next mark in list
+- `<leader>hn` - (Harpoon) Previous mark in list
+
 ## Visual text
 
 - `vab` Select Around Brackets, `vib` Select Inside Brackets
@@ -24,6 +49,8 @@
 
 ## Surround words
 
+> s<action><against what><quote type>
+
 - `saw%` surround around word with %
 - `sd-` surround delete -
 - `sr"'` surround replace "" with ''
@@ -35,7 +62,7 @@
 - `space y` copy to system buffer
 - `space d` cut and move to system buffer
 
-### Text moves
+### Text manipulations
 
 - `griw` replace current work with yank, but keep yank as it was (default `vsiwp` replaces yank...)
 - `gxiww.` EXchange Inner Word .. next Word .. and `.` to apply
@@ -44,6 +71,7 @@
   - also works with `b`rackets and `m` as lines
 - `grr` replace whole line with yank, doesn't affect yank and it keep tab level
 - `g=ib` evaluates Inner Brackets, example is `(93 + 16)->(109)`
+- `gS` - toggle split/join lines
 
 ## LSP
 
