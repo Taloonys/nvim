@@ -22,7 +22,6 @@ return {
 				lua = { "stylua" },
 				python = { "black" },
 				cpp = { "clang_format" },
-				rust = { "rustfmt" },
 				go = { "gofumpt" },
 			},
 			format_on_save = {

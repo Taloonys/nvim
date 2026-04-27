@@ -46,7 +46,6 @@ local lsp_tools_installer = {
 			"gofumpt",
 			"prettier",
 			"black",
-			"rustfmt",
 			"clang-format",
 			"stylua",
 			-- linters
