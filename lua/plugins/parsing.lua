@@ -76,6 +76,8 @@ end
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		branch = "master", -- back-support nvim 0.11 and according plugins
+		lazy = false,
 		build = function()
 			require("nvim-treesitter.install").update({ with_sync = true })()
 		end,
