@@ -29,6 +29,6 @@ return {
 		"rafamadriz/friendly-snippets",
 		"hrsh7th/cmp-nvim-lsp-signature-help",
 		"davidsierradz/cmp-conventionalcommits",
-		cmp_doxygen,
+		-- cmp_doxygen,
 	},
 }

@@ -1,70 +1,40 @@
-function TreesitterConfig()
-	---@diagnostic disable: missing-fields
-	require("nvim-treesitter.configs").setup({
-		-- A list of parser names, or "all" (the listed parsers MUST always be installed)
-		-- * Well, it will install this parsers *
-		ensure_installed = {
-			"rust",
-			"cpp",
-			"javascript",
-			"c",
-			"lua",
-			"vim",
-			"vimdoc",
-			"query",
-			"markdown",
-			"markdown_inline",
-			"doxygen",
-			"xml",
-		},
+local parsers = {
+	"rust",
+	"cpp",
+	"javascript",
+	"c",
+	"lua",
+	"vim",
+	"vimdoc",
+	"query",
+	"markdown",
+	"markdown_inline",
+	-- "doxygen",
+	"xml",
+}
 
-		-- Install parsers synchronously (only applied to `ensure_installed`)
-		sync_install = false,
+local function SupportWix()
+	-- Enable Tree-sitter highlighting when a parser is available.
+	vim.api.nvim_create_autocmd("FileType", {
+		pattern = parsers,
+		callback = function(args)
+			local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
 
-		-- Automatically install missing parsers when entering buffer
-		-- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-		auto_install = true,
-
-		-- List of parsers to ignore installing (or "all")
-		-- ignore_install = { "javascript" },
-
-		---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
-		-- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
-
-		highlight = {
-			enable = true,
-
-			-- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
-			-- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
-			-- the name of the parser)
-			-- list of language that will be disabled
-			-- disable = { "c", "rust" },
-			-- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
-			-- disable = function(lang, buf)
-			--     local max_filesize = 100 * 1024 -- 100 KB
-			--     local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-			--     if ok and stats and stats.size > max_filesize then
-			--         return true
-			--     end
-			-- end,
-
-			-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-			-- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-			-- Using this option may slow down your editor, and you may see some duplicate highlights.
-			-- Instead of true it can also be a list of languages
-			additional_vim_regex_highlighting = false,
-		},
+			if lang and pcall(vim.treesitter.language.inspect, lang) then
+				vim.treesitter.start(args.buf, lang)
+			end
+		end,
 	})
 
 	--
-	-- enable xml parser for wxs files (it's Wix)
+	-- Enable XML parser for WXS/WXI/WXL files (WiX).
 	--
 
 	vim.filetype.add({
 		extension = {
 			wxs = "wxs",
 			wxi = "wxi",
-			wxl = "wxi",
+			wxl = "wxl",
 		},
 	})
 
@@ -73,12 +43,29 @@ function TreesitterConfig()
 	vim.treesitter.language.register("xml", "wxl")
 end
 
+local function TreesitterConfig()
+	local treesitter = require("nvim-treesitter")
+
+	treesitter.setup({
+		-- Keep parser installation separate from Neovim's runtime.
+		-- Change this only if you have a custom parser location.
+		install_dir = vim.fn.stdpath("data") .. "/site",
+	})
+
+	-- Install missing parsers.
+	-- New nvim-treesitter no longer has `ensure_installed` / `auto_install`
+	-- in the old configs.setup() API.
+	treesitter.install(parsers)
+
+	-- SupportWix()
+end
+
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		build = function()
-			require("nvim-treesitter.install").update({ with_sync = true })()
-		end,
+		branch = "main",
+		lazy = false,
+		build = ":TSUpdate",
 		config = TreesitterConfig,
 	},
 }
