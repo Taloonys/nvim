@@ -109,7 +109,7 @@ cmp.setup({
 		{ name = "path", priority = 200 }, -- system paths
 		{ name = "nvim_lsp_signature_help", priority = 100 }, -- show signature docs
 		{ name = "treesitter", priority = 600 },
-		{ name = "doxygen", priority = 100 },
+		-- { name = "doxygen", priority = 100 },
 		{ name = "conventionalcommits", priority = 50 },
 	}),
 })

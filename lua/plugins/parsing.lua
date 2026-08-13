@@ -14,7 +14,7 @@ function TreesitterConfig()
 			"query",
 			"markdown",
 			"markdown_inline",
-			"doxygen",
+			-- "doxygen",
 			"xml",
 		},
 
